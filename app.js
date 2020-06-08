@@ -52,13 +52,61 @@ mongoDB.connectDB(async (err) => {
 //routes
 
 //get admin login
-app.get('/', function(req, res, next){
+app.get('/', function(req, res){
     res.render('index')
-    next()
+    
 })
 
+app.get('/dashboard', function(req, res){
+    res.render('dashboard')
+    
+})
+
+app.get('/patientForm', function(req, res){
+    res.render('patientForm')
+})
+
+app.get('/viewPatients', function(req, res){
+    res.render('viewPatients')
+})
+
+app.get('/paymentForm', function(req, res){
+    res.render('paymentForm')
+})
+
+
+app.get('/editPayment', function(req, res){
+    res.render('editPayment')
+})
+
+
+app.post('/', function(req, res){
+    res.render('dashboard')
+})
+
+app.post('/patientRecord', function(req, res){
+      var List = req.body.list.slice(0)
+      var splitedList = List.split(/\n/)
+      var data = {firstname: req.body.name, lastname:req.body.lastname, phone:req.body.phone, amount:req.body.amount}
+      console.log(data)
+      
+      dbo.collection(patientRecordAndPaymentCollectionName).insertOne(data, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+    
+      });
+})
+
+
+
+
+
+
+
+
+
 //handle admin login
-app.post('/dashboard', function(req, res){
+app.post('/login', function(req, res){
     mongoDB.connectDB(async (err) => {
         if (err) throw err
         // validate admin
@@ -74,7 +122,7 @@ app.post('/dashboard', function(req, res){
                     res.render('dashboard')
                 }
                 else{
-                    res.render('incorrect password')
+                    res.render('incorrect')
                 }
             })
             

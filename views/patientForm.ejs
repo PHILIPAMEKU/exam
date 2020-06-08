@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GoodHealthConsult</title>
+        <link href="/styles.css" rel="stylesheet" type="text/css"/>
+        
+    </head>
+    <body id="homeviewbody">
+        <header><h1>Good Health Consult</h1></header>
+        <div id="home">
+            <h3>Patient Form</h3>
+            <form id="Login" method="POST" action="/dashboard">
+                <p>Firstname <input type="text" name="firstname" placeholder="firstname" required/></p>
+                <p>lastname <input type="text"  name="password" placeholder="lastname"/>
+                <p>DOB <input type="date" name="dob" placeholder="dob"/></p>
+                <p>Contact <input type="text" name="contact" placeholder="contact"/></p>
+                <p>Emergency Contact<input type="text" name="emergencycontact" placeholder="emergency contact"/></p>
+                <p style="padding-left: 50px;"><button type="submit" id="submitbutton">sumbit</button></p>
+            </form>
+           
+        </div>
+    </body>
+</html>
